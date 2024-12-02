@@ -7,20 +7,22 @@ fn parse(input: &str) -> (Vec<i32>, Vec<i32>) {
     let mut v2 = vec![];
     for ln in input.lines() {
         let (a, b) = ln.split_once("   ").unwrap();
-        // let a: i32 = a.parse().unwrap();
-        // let b: i32 = b.parse().unwrap();
         v1.push(a.parse::<i32>().unwrap());
         v2.push(b.parse::<i32>().unwrap());
     }
-    (v1,v2)
-
+    (v1, v2)
 }
 
 pub fn part_one(input: &str) -> Option<i32> {
     let (mut v1, mut v2) = parse(input);
     v1.sort();
     v2.sort();
-    Some(v1.iter().zip(v2.iter()).map(|(a,b)| (a-b).abs()).sum::<i32>())
+    Some(
+        v1.iter()
+            .zip(v2.iter())
+            .map(|(a, b)| (a - b).abs())
+            .sum::<i32>(),
+    )
 }
 
 pub fn part_two(input: &str) -> Option<i32> {
